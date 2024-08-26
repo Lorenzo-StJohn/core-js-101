@@ -460,8 +460,13 @@ function sortCitiesArray(arr) {
  *           [0,0,0,0,1]]
  */
 function getIdentityMatrix(n) {
-  const matrix = new Array(n).fill(new Array(n).fill(0));
-  return matrix.map((el, index) => el.toSpliced(index, 1, 1));
+  const matrix = new Array(n).fill(1);
+  const matrix1 = matrix.map((el, index) => {
+    const a = new Array(index).fill(0);
+    const b = new Array(n - index - 1).fill(0);
+    return a.concat([el]).concat(b);
+  });
+  return matrix1;
 }
 
 /**
